@@ -1,0 +1,54 @@
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="shared-styles.html">
+
+
+<dom-module id="my-view4">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+    </style>
+
+    <div class="card">
+      <div class="circle">{{daysTilFriday}}</div>
+      <h1>Days til friday</h1>
+      <paper-button id="subtract-button" on-tap="onSubtractClicked" class="indigo">-</paper-button>
+      <paper-button id="plus-button" on-tap="onPlusClicked" class="indigo">+</paper-button>
+    </div>
+      
+  </template>
+
+  <script>
+    Polymer({
+      is: 'my-view4',
+      properties: {
+        daysTilFriday: {
+          type: Number,
+          value: 4
+        }
+      },
+      onPlusClicked: function(){
+        this.daysTilFriday +=1;
+
+      },
+      onSubtractClicked: function(){
+        this.daysTilFriday -=1;
+
+      },
+      attached: function(){
+        var subtractButton  = this.$["subtract-button"];
+        var plusButton      = this.$["plus-button"];
+
+      },
+      ready: function(){
+        this.daysTilFriday = 3;
+      }
+    });
+  </script>
+</dom-module>
