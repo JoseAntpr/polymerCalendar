@@ -26,10 +26,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <template>
     <style>
       :host {
-        --app-primary-color: #4285f4;
+        --app-primary-color: var(--google-green-500);
         --app-secondary-color: black;
 
         display: block;
+        --month-paper-tabs: {
+          color: white;
+          background-color: var(--app-primary-color);
+        }
       }
 
       app-header {
@@ -77,12 +81,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <!-- Main content -->
       <app-header-layout has-scrolling-region>
 
-        <app-header condenses reveals effects="waterfall">
+        <!--<app-header condenses reveals effects="waterfall">
           <app-toolbar>
             <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
             <div main-title>My App</div>
           </app-toolbar>
-        </app-header>
+        </app-header>-->
 
         <iron-pages
             selected="[[page]]"
