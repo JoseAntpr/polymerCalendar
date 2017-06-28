@@ -9,9 +9,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
-<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
-<script  src="../bower_components/moment/moment.js"></script>
+<link rel="import" href="./time-bar.html">
+<link rel="import" href="./month-weeks.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="current-month">
@@ -20,6 +19,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       :host {
         display: block;
         padding: 10px;
+
+        --month-paper-tabs: {
+          color: white;
+          background-color: var(--app-primary-color);
+        }
       }
       app-header {
         color: #fff;
@@ -28,55 +32,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       app-header paper-icon-button {
         --paper-icon-button-ink-color: white;
       }
-      paper-tabs {
-        @apply(--month-paper-tabs);
-      }
-      .card {
-        margin-top: 25vh;
-      }
+      
     </style>
 
-    <app-header-layout fullbleed has-scrolling-region>
-
-      <app-header condenses reveals effects="waterfall">
-        <app-toolbar>
-          <!--<div main-title>[[currentMonth]], [[currentYear]]. [[currentMonthFirtsWeek]] - [[currentMonthLastWeek]]</div>-->
-          <div main-title>[[currentMonth]], [[currentYear]]</div>
-        </app-toolbar>
-      </app-header>
-    </app-header-layout>
-
-  <div class="card">
-    <paper-tabs selected="{{selected}}">
-      <paper-tab>w09</paper-tab>
-      <paper-tab>w10</paper-tab>
-      <paper-tab>w11</paper-tab>
-      <paper-tab>w12</paper-tab>
-      <paper-tab>w13</paper-tab>
-    </paper-tabs>
-
-    <iron-pages selected="{{selected}}">
-      <div>Semana 09</div>
-      <div>Semana 10</div>
-      <div>Semana 11</div>
-      <div>Semana 12</div>
-      <div>Semana 13</div>
-    </iron-pages>
-  </div>
-
-
-  
+  <time-bar></time-bar>
+  <month-weeks></month-weeks>  
   </template>
 
   <script>
     Polymer({
       is: 'current-month',
-      ready: function(){
-        var currentDate = moment();
-        this.currentMonth = currentDate.month() + 1;
-        this.currentYear =currentDate.year();
-
-      },
+      
     });
   </script>
 </dom-module>

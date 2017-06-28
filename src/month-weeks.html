@@ -1,0 +1,40 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+
+<dom-module id="month-weeks">
+    <template>
+        <style>
+            paper-tabs {
+                @apply(--month-paper-tabs);
+            }
+            .card {
+                margin-top: 25vh;
+             }
+        </style>
+        <div class="card">
+            <paper-tabs selected="{{selected}}">
+                <paper-tab>w09</paper-tab>
+                <paper-tab>w10</paper-tab>
+                <paper-tab>w11</paper-tab>
+                <paper-tab>w12</paper-tab>
+                <paper-tab>w13</paper-tab>
+            </paper-tabs>
+
+            <iron-pages selected="{{selected}}">
+                <div>Semana 09</div>
+                <div>Semana 10</div>
+                <div>Semana 11</div>
+                <div>Semana 12</div>
+                <div>Semana 13</div>
+            </iron-pages>
+        </div>
+
+    </template>
+    <script>
+        Polymer({
+            is: 'month-weeks'
+        });
+    </script>
+
+</dom-module>

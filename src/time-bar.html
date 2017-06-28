@@ -1,0 +1,37 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<script  src="../bower_components/moment/moment.js"></script>
+
+<dom-module id="time-bar">
+    <template>
+        <style>
+            app-header {
+                color: #fff;
+                background-color: var(--app-primary-color);
+             }
+            app-header paper-icon-button {
+                --paper-icon-button-ink-color: white;
+            }
+        </style>
+        <app-header-layout fullbleed has-scrolling-region>
+
+            <app-header condenses reveals effects="waterfall">
+                <app-toolbar>
+                    <!--<div main-title>[[currentMonth]], [[currentYear]]. [[currentMonthFirtsWeek]] - [[currentMonthLastWeek]]</div>-->
+                    <div main-title>[[currentMonth]], [[currentYear]]</div>
+                </app-toolbar>
+            </app-header>
+        </app-header-layout>
+
+    </template>
+    <script>
+        Polymer({
+            is: 'time-bar',
+            ready: function(){
+                var currentDate = moment();
+                this.currentMonth = currentDate.month() + 1;
+                this.currentYear =currentDate.year();
+            },
+        });
+    </script>
+
+</dom-module>
