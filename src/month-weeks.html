@@ -1,6 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<script src="../bower_components/ramda/dist/ramda.js"></script>
 
 <dom-module id="month-weeks">
     <template>
@@ -14,26 +15,35 @@
         </style>
         <div class="card">
             <paper-tabs selected="{{selected}}">
-                <paper-tab>w09</paper-tab>
-                <paper-tab>w10</paper-tab>
-                <paper-tab>w11</paper-tab>
-                <paper-tab>w12</paper-tab>
-                <paper-tab>w13</paper-tab>
+                <template is="dom-repeat" items="{{monthWeeks}}" as="week">
+                    <paper-tab>{{week}}</paper-tab>
+                </template>
             </paper-tabs>
 
             <iron-pages selected="{{selected}}">
-                <div>Semana 09</div>
-                <div>Semana 10</div>
-                <div>Semana 11</div>
-                <div>Semana 12</div>
-                <div>Semana 13</div>
+                <template is="dom-repeat" items="{{monthWeeks}}" as="week">
+                    <paper-tab>{{week}}</paper-tab>
+                </template>
             </iron-pages>
         </div>
 
     </template>
     <script>
         Polymer({
-            is: 'month-weeks'
+            is: 'month-weeks',
+            ready: function(){
+                var currentDate     = moment(),
+                    start           = moment(currentDate).startOf('month').week(),
+                    end             = moment(currentDate).endOf('month').week();
+
+                this.monthWeeks = R.map(function (weekNumber){ 
+                    return 'W'.concat(weekNumber);
+                    }, R.range(start,end + 1));
+
+                this.selected = 0;
+
+                
+            }
         });
     </script>
 

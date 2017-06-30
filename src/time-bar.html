@@ -16,8 +16,7 @@
 
             <app-header condenses reveals effects="waterfall">
                 <app-toolbar>
-                    <!--<div main-title>[[currentMonth]], [[currentYear]]. [[currentMonthFirtsWeek]] - [[currentMonthLastWeek]]</div>-->
-                    <div main-title>[[currentMonth]], [[currentYear]]</div>
+                    <div main-title>[[currentMonth]], [[currentYear]]. W[[currentMonthFirtsWeek]] - W[[currentMonthLastWeek]]</div>
                 </app-toolbar>
             </app-header>
         </app-header-layout>
@@ -27,10 +26,14 @@
         Polymer({
             is: 'time-bar',
             ready: function(){
-                var currentDate = moment();
-                this.currentMonth = currentDate.month() + 1;
+                var currentDate     = moment(),
+                    start           = moment(currentDate).startOf('month'),
+                    end             = moment(currentDate).endOf('month')
+
+                this.currentMonth = currentDate.format('MMMM');
                 this.currentYear =currentDate.year();
-            },
+                this.currentMonthFirtsWeek = start.week();
+                this.currentMonthLastWeek = end.week();            },
         });
     </script>
 
