@@ -1,0 +1,34 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="./week-highlight.html">
+
+
+
+<dom-module id="week-content">
+    <template>
+        <style>
+            paper-card{
+                margin-top: 3vh;
+            } 
+        </style>
+        <div>
+            <week-highlight week="{{week}}"></week-highlight>
+        </div>
+        
+
+    </template>
+    <script>
+        Polymer({
+            is: 'week-content',
+            properties: {
+                week: {
+                    type: String,
+                    reflectToAttribute: true
+                }
+            },
+            ready: function(){
+
+            }
+        });
+    </script>
+
+</dom-module>

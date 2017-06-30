@@ -1,6 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="./week-content.html">
 <script src="../bower_components/ramda/dist/ramda.js"></script>
 
 <dom-module id="month-weeks">
@@ -22,7 +23,9 @@
 
             <iron-pages selected="{{selected}}">
                 <template is="dom-repeat" items="{{monthWeeks}}" as="week">
-                    <paper-tab>{{week}}</paper-tab>
+                    <paper-tab>
+                        <week-content week={{week}}></week-content>
+                    </paper-tab>
                 </template>
             </iron-pages>
         </div>

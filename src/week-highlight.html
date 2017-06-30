@@ -1,0 +1,38 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+
+
+<dom-module id="week-highlight">
+    <template>
+        <style>
+            paper-card{
+                margin-top: 3vh;
+            } 
+        </style>
+        <paper-card  image="http://placeholdit.imgix.net/~text?txtsize=25&txt={{week}}&w=200&h=75" alt="Sailboat Harbor" class="white">
+            <div class="card-content">
+                {{weekHighlightDescription}}
+            </div>
+            <div class="card-actions">
+            </div>
+        </paper-card>
+
+
+    </template>
+    <script>
+        Polymer({
+            is: 'week-highlight',
+            properties: {
+                week: {
+                    type: String,
+                    reflectToAttribute: true
+                }
+            },
+            ready: function(){
+                this.weekHighlightDescription = 'Semana en la que aprendimos Polymer';
+
+            }
+        });
+    </script>
+
+</dom-module>
